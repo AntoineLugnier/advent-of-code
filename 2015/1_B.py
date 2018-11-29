@@ -1,4 +1,4 @@
-content = open('annexes\\2015_01_B.txt', 'r').read()
+content = open('annexes\\1_B.txt', 'r').read()
 
 floor = 0
 for i in range (0,len(content)):
@@ -9,4 +9,4 @@ for i in range (0,len(content)):
     if floor < 0:
         break
 
-input(i+1)
+print('Answer : ' + str(i+1))

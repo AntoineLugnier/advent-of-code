@@ -1,4 +1,4 @@
-content = open('annexes\\2015_01_A.txt', 'r').read()
+content = open('annexes\\1_A.txt', 'r').read()
 
 floor = 0
 for i in range (0,len(content)):
@@ -7,4 +7,4 @@ for i in range (0,len(content)):
     elif content[i] == ')':
         floor -= 1
 
-input(floor)
+print('Answer : ' + str(floor))

@@ -1,4 +1,4 @@
-content = open('annexes\\2015_05_A.txt', 'r').read().split('\n')
+content = open('annexes\\5.txt', 'r').read().split('\n')
 
 banlist = ['ab', 'cd', 'pq', 'xy']
 
@@ -18,4 +18,4 @@ for word in content :
     if (not banSub) and double and (nbVoy >= 3) :
         count += 1
 
-input(count)
+print('Answer : ' + str(count))

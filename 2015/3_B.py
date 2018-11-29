@@ -1,6 +1,4 @@
-content = open('annexes\\2015_03_A.txt', 'r').read()
-
-print(content)
+content = open('annexes\\3.txt', 'r').read()
 
 x1, y1, x2, y2 = 0, 0, 0, 0
 houses = 1
@@ -34,4 +32,4 @@ for i in range(0,len(content)):
             houses += 1
             visited.append((x2,y2))
 
-input(houses)
+print('Answer : ' + str(houses))

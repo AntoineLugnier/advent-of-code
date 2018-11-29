@@ -1,4 +1,4 @@
-content = open('annexes\\2015_02_A.txt', 'r').read().split('\n')
+content = open('annexes\\2.txt', 'r').read().split('\n')
 
 total = 0
 for gift in content :
@@ -9,4 +9,4 @@ for gift in content :
         h = int(dims[2])
         total += (2*(l + h + L)) + l*L*h - 2*max(l,L,h)
 
-input(total)
+print('Answer : ' + str(total))
