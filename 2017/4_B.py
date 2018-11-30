@@ -13,3 +13,4 @@ for line in content :
             valids += 1
 
 print(valids)
+ 
