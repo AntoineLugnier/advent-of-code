@@ -1,9 +1,12 @@
+import time
+start = time.time()
+
 content = open("annexes\\7.txt",'r').read().split('\n')
 
 if '' in content :
     content.pop(content.index(''))
 
-tempA = -1
+tempA, resultA, resultB = -1, '', ''
 for i in range(0,2) :
     done = [False for x in range(0,len(content))]
     dict = {}
@@ -44,5 +47,9 @@ for i in range(0,2) :
                 except :
                     True
     tempA = dict['a']
+    if resultA == '' :
+        resultA = dict['a']
+    else :
+        resultB = dict['a']
 
-print('Answer : ' + str(dict['a']))
+print('\nAdvent of Code 2015\n7-A :', resultA,'\n7-B :', resultB,'\nIn  :', "%.2f" % (time.time()-start),'sec\n')

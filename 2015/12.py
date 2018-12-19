@@ -1,3 +1,6 @@
+import time
+start = time.time()
+
 content = open('annexes\\12.txt', 'r').read()
 
 def deleteDicts(stri, value) :
@@ -32,6 +35,21 @@ def deleteDicts(stri, value) :
     else :
         return stri
 
+total = 0
+i=0
+nb = ''
+while i < len(content) :
+    if content[i] in ['-','0','1','2','3','4','5','6','7','8','9'] :
+        nb += content[i]
+    else :
+        if nb != '' :
+            total += int(nb)
+            nb = ''
+    i += 1
+if nb != '' :
+    total += int(nb)
+
+totalA = total
 content = deleteDicts(content, '"red"')
 
 total = 0
@@ -47,4 +65,5 @@ while i < len(content) :
     i += 1
 if nb != '' :
     total += int(nb)
-print(total)
+
+print('\nAdvent of Code 2015\n12-A :', totalA,'\n12-B :', total,'\nIn   :', "%.2f" % (time.time()-start),'sec\n')

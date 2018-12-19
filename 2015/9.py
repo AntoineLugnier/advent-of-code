@@ -1,3 +1,6 @@
+import time
+start = time.time()
+
 content = open("annexes\\9.txt",'r').read().split('\n')
 
 distances = {}
@@ -13,7 +16,7 @@ for line in content :
         distances[(elements[0],elements[2])] = int(elements[4])
         distances[(elements[2],elements[0])] = int(elements[4])
 
-def shortestWay(town, dists) :
+def optiWay(town, dists, minMax) :
     global distances
 
     copyDists = dists.copy()
@@ -21,6 +24,9 @@ def shortestWay(town, dists) :
 
     if len(copyDists) == 0 :
         return 0
-    return max(distances[(town, nextTown)]+shortestWay(nextTown, copyDists) for nextTown in copyDists)
+    if minMax == 'min' :
+        return min(distances[(town, nextTown)]+optiWay(nextTown, copyDists, minMax) for nextTown in copyDists)
+    else :
+        return max(distances[(town, nextTown)]+optiWay(nextTown, copyDists, minMax) for nextTown in copyDists)
 
-print(max(shortestWay(town, towns) for town in towns))
+print('\nAdvent of Code 2015\n9-A :', min(optiWay(town, towns, 'min') for town in towns),'\n9-B :', max(optiWay(town, towns, 'max') for town in towns),'\nIn  :', "%.2f" % (time.time()-start),'sec\n')

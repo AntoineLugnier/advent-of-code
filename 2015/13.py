@@ -1,3 +1,6 @@
+import time
+start = time.time()
+
 content = open('annexes\\13.txt', 'r').read().split('\n')
 
 sittingNext = {}
@@ -26,4 +29,13 @@ def maxHappiness(liste, peoplesL) :
     else :
         return max(maxHappiness(liste+[peoplesL[i]], peoplesL[:i]+peoplesL[i+1:]) for i in range(len(peoplesL)))
 
-print( maxHappiness([], peoples) )
+resultA = maxHappiness([], peoples)
+
+for person in peoples :
+    sittingNext[('me', person)] = 0
+    sittingNext[(person, 'me')] = 0
+peoples.append('me')
+
+resultB = maxHappiness([], peoples)
+
+print('\nAdvent of Code 2015\n13-A :', resultA,'\n13-B :', resultB,'\nIn   :', "%.2f" % (time.time()-start),'sec\n')

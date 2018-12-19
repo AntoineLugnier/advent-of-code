@@ -1,3 +1,6 @@
+import time
+start = time.time()
+
 content = open('annexes\\14.txt', 'r').read().split('\n')
 
 reineers = {}
@@ -24,4 +27,6 @@ for i in range (2503) :
         if value['totalDist'] == maxi :
             value['score'] += 1
 
-print(max(value['score'] for key, value in reineers.items()))
+resultA = max(value['totalDist'] for key, value in reineers.items())
+resultB = max(value['score'] for key, value in reineers.items())
+print('\nAdvent of Code 2015\n14-A :', resultA,'\n14-B :', resultB,'\nIn   :', "%.2f" % (time.time()-start),'sec\n')

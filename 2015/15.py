@@ -1,3 +1,6 @@
+import time
+start = time.time()
+
 content = open("annexes\\15.txt",'r').read().split('\n')
 
 ingredients = []
@@ -7,7 +10,7 @@ for line in content :
         stats = line.split(' ')
         ingredients.append([int(stats[2][:len(stats[2])-1]), int(stats[4][:len(stats[4])-1]), int(stats[6][:len(stats[6])-1]), int(stats[8][:len(stats[8])-1]), int(stats[10])])
 
-maxi = 0
+maxiA, maxiB = 0, 0
 for a in range(1,98) :
     for b in range(1,99-a) :
         for c in range (1,100 - a - b) :
@@ -25,7 +28,9 @@ for a in range(1,98) :
             if texture < 0 :
                 texture = 0
             calories = ingredients[0][4]*a + ingredients[1][4]*b + ingredients[2][4]*c +ingredients[3][4]*d
-            if texture * durability * flavor * capacity > maxi and calories == 500:
-                maxi = texture * durability * flavor * capacity
+            if texture * durability * flavor * capacity > maxiA:
+                maxiA = texture * durability * flavor * capacity
+            if texture * durability * flavor * capacity > maxiB and calories == 500:
+                maxiB = texture * durability * flavor * capacity
 
-print(maxi)
+print('\nAdvent of Code 2015\n15-A :', maxiA,'\n15-B :', maxiB,'\nIn   :', "%.2f" % (time.time()-start),'sec\n')
